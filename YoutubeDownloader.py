@@ -20,7 +20,7 @@ def video():
     user_link = input("\nEnter the link of the video: ")
     yt_link = YouTube(' ' + user_link + ' ')
 
-    for x in yt_link.streams.filter(file_extension='mp4'):
+    for x in yt_link.streams.filter(progressive=True):
             print(x)
 
     yt_itag = input("\nEnter the itag number: ")
@@ -41,7 +41,7 @@ def audio():
 def download(yt_link, yt_itag):
     yt_video = yt_link.streams.get_by_itag(yt_itag)
     print(yt_video)
-    
+
     path = input("\nEnter path: ")
     yt_video.download(path)
 
