@@ -6,13 +6,14 @@ except:
 def option():
     print("Welcome to the youtube downloader!")
 
-    options = input("Would you like to download the audio or video of the file?: ")
+    options = input("Would you like to download audio or video?: ")
 
     while options.lower() != 'audio' and options.lower() != 'video':
         options = input("Please enter the correct options (audio or video): ")
 
     if options.lower() == 'audio':
         audio()
+        
     elif options.lower() == 'video':
         video()
 
@@ -21,7 +22,7 @@ def video():
     yt_link = YouTube(' ' + user_link + ' ')
 
     for x in yt_link.streams.filter(progressive=True):
-            print(x)
+        print(x)
 
     yt_itag = input("\nEnter the itag number: ")
 
@@ -32,7 +33,7 @@ def audio():
     yt_link = YouTube(' ' + user_link + ' ')
 
     for x in yt_link.streams.filter(only_audio=True):
-            print(x)
+        print(x)
     
     yt_itag = input("\nEnter the itag number: ")
 
@@ -40,7 +41,6 @@ def audio():
 
 def download(yt_link, yt_itag):
     yt_video = yt_link.streams.get_by_itag(yt_itag)
-    print(yt_video)
 
     path = input("\nEnter path: ")
     yt_video.download(path)
